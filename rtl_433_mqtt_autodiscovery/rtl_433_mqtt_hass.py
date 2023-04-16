@@ -120,6 +120,57 @@ SKIP_KEYS = NAMING_KEYS + [ "time", "mic", "mod", "freq", "sequence_num",
 # @todo - Model specific definitions might be needed
 
 mappings = {
+
+#--------------------------------------------------------------------  
+#Mappings for missing sensors
+#rtl_433//devices/Fine_Offset_Electronics_WH1080_WH3080_Weather_Station
+#--------------------------------------------------------------------  
+    "direction_deg": {
+        "device_type": "sensor",
+        "object_suffix": "WD",
+        "config": {
+            "name": "Wind Direction",
+            "unit_of_measurement": "°",
+            "value_template": "{{ value|float }}",
+            "state_class": "measurement"
+        }
+    },
+
+   "speed": {
+        "device_type": "sensor",
+        "object_suffix": "WS",
+        "config": {
+            "name": "Wind Speed",
+            "unit_of_measurement": "km/h",
+            "value_template": "{{ float(value|float) * 3.6 }}",
+            "state_class": "measurement"
+        }
+    },
+  
+    "gust": {
+        "device_type": "sensor",
+        "object_suffix": "GS",
+        "config": {
+            "name": "Gust Speed",
+            "unit_of_measurement": "km/h",
+            "value_template": "{{ float(value|float) * 3.6 }}",
+            "state_class": "measurement"
+        }
+    },
+
+    "rain_mm": {
+        "device_type": "sensor",
+        "object_suffix": "RT",
+        "config": {
+            "name": "Rain Total",
+            "unit_of_measurement": "mm",
+            "value_template": "{{ value|float }}",
+            "state_class": "total_increasing"
+        }
+    },
+
+#----------------------------------------------------------------------
+  
     "temperature_C": {
         "device_type": "sensor",
         "object_suffix": "T",
